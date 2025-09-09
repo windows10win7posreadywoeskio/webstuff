@@ -1,8 +1,88 @@
 <html>
     <head>
+        <title>hes having ap arty</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="title" content="party">
+        <style>
+            #party {
+                position: fixed; /* or absolute */
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                pointer-events: none;
+                /* Optional: z-index for layering o*/
+                z-index: 10; 
+            }
+
+            #clickhim {
+                position: fixed;
+                left: 52%;
+                bottom: 1%;
+            }
+
+
+            .d7n7 button {
+                border: none;
+                outline: none;
+            }
+            .d7n7 button:hover {
+                outline: none;
+                border: none;
+            }
+            .d7n7 button:active {
+                outline: none;
+                border: none;
+            }
+            .d7n7 button:focus {
+                outline:none;
+                border: none;
+            }
+
+
+            @keyframes party {
+                0% { background-color: rgba(255, 0, 0, 0.5); }
+                16.6% { background-color: rgba(255, 127, 0, 0.5); }
+                33.3% { background-color: rgba(255, 255, 0, 0.5); }
+                50% { background-color: rgba(0, 255, 0, 0.5); }
+                66.6% { background-color: rgba(0, 0, 255, 0.5); }
+                83.3% { background-color: rgba(75, 0, 130, 0.5); }
+                100% { background-color: rgba(148, 0, 211, 0.5); }
+            }
+
+            #party.active {
+                animation: party 3s step-start infinite alternate; /* 3-second infinite loop */
+            }
+        </style>
     </head>
     <body>
-        <h1>website</h1>
-        <p>i am adding stuff later</p>
+        <div id="party"></div>
+        <div class="d7n7">
+            <audio id="part2" src="music.mp3"></audio>
+            <button id="clickhim"><img id="p7n7-1" src="007n71.png"></button>
+        </div>
     </body>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+        const button = document.getElementById('clickhim');
+        const div = document.getElementById('party')
+        const audio = document.getElementById('part2');
+        let isPlaying = false;
+        let fadeInterval;
+
+        function toggleState() {
+            if (div.classList.contains('active')) {
+            // Stop the animation and disable the button
+                div.classList.remove('active');
+                audio.pause();
+            } else {
+            // Start the animation and enable the button
+                div.classList.add('active');
+                audio.play();
+            }
+        }
+
+        button.addEventListener('click', toggleState);
+        });
+    </script>
 </html>
